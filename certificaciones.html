@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificados</title>
+</head>
+
+<body class="style-body">
+
+  <main class="style-main">
+    <section class="style-section">
+      <h1 class="style-h1 titulo-principal">Generar Certificados</h1>
+
+      <form class="style-forms" action="php/insertar_certificado.php" method="POST">
+
+        <p class="parrafos">
+          <label class="style-label">Nombre del estudiante:</label>
+          <input class="style-input-text" type="text" name="nombre" placeholder="Ingresa el nombre completo" required>
+        </p>
+
+        <p class="parrafos">
+          <label class="style-label">Nombre del curso:</label>
+          <input class="style-input-text" type="text" name="curso" placeholder="Ejemplo: Programación Básica" required>
+        </p>
+
+        <p class="parrafos">
+          <label class="style-label">Fecha de finalización:</label>
+          <input class="style-input-date" type="date" name="fecha" required>
+        </p>
+
+        <p class="parrafos">
+          <label class="style-label">Código del certificado:</label>
+          <input class="style-input-text" type="text" name="codigo" placeholder="Ejemplo: 2025-ABC123" required>
+        </p>
+
+        <p class="parrafos">
+          <label class="style-label">Docente encargado:</label>
+          <input class="style-input-text" type="text" name="docente" placeholder="Nombre del docente" required>
+        </p>
+
+        <p class="parrafos">
+          <button class="style-button" type="submit">Generar Certificado</button>
+          <button class="style-button" type="reset">Limpiar Campos</button>
+        </p>
+
+      </form>
+    </section>
+  </main>
+
+  <footer class="style-footer">
+    <p class="parrafos">© 2025 Centro Educativo</p>
+  </footer>
+
+</body>
+
+</html>
