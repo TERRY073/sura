@@ -13,14 +13,15 @@
 
     <fieldset class="style-fieldset">
       <legend class="style-legend">Calificaciones</legend>
+
       <p class="parrafos">
         <label class="style-label">Asignatura:</label>
         <select class="style-select" name="Asignaturas">
           <option value="Seleccionar">Seleccionar</option>
-          <option value="curso de logica">curso de logica</option>
-          <option value="curso de reposteria">curso de reposteria</option>
-          <option value="curso de finansas">curso de finansas</option>
-          <option value="curso de Riesgo">curso de Riesgo</option>
+          <option value="curso de logica">Curso de Lógica</option>
+          <option value="curso de reposteria">Curso de Repostería</option>
+          <option value="curso de finanzas">Curso de Finanzas</option>
+          <option value="curso de riesgo">Curso de Riesgo</option>
         </select>
       </p>
 
@@ -51,48 +52,45 @@
         </thead>
         <tbody class="style-tbody">
           <tr class="style-tr">
-            <td class="style-td"><input class="style-input-text" type="text" name="estudiante_nombre" required></td>
-            <td class="style-td"><input class="style-input-number" type="number" name="nota1" step="0.1" required></td>
-            <td class="style-td"><input class="style-input-number" type="number" name="nota2" step="0.1" required></td>
-            <td class="style-td"><input class="style-input-number" type="number" name="nota3" step="0.1" required></td>
-            <td class="style-td"><input class="style-input-number" type="number" name="notaFinal" step="0.1" required>
+            <td class="style-td">
+              <input class="style-input-text" type="text" name="estudiante_nombre" required>
+            </td>
+            <td class="style-td">
+              <input class="style-input-number" type="number" name="nota1" step="0.1" required>
+            </td>
+            <td class="style-td">
+              <input class="style-input-number" type="number" name="nota2" step="0.1" required>
+            </td>
+            <td class="style-td">
+              <input class="style-input-number" type="number" name="nota3" step="0.1" required>
+            </td>
+            <td class="style-td">
+              <input class="style-input-number" type="number" name="notaFinal" step="0.1" readonly>
             </td>
           </tr>
         </tbody>
       </table>
-
-      <br>
-
-      <button class="style-button" type="submit">Guardar Nota</button>
-      <script>
-
-        function calcularNotaFinal() {
-          let n1 = parseFloat(document.getElementById("nota1").value) || 0;
-          let n2 = parseFloat(document.getElementById("nota2").value) || 0;
-          let n3 = parseFloat(document.getElementById("nota3").value) || 0;
-
-          let promedio = ((n1 + n2 + n3) / 3).toFixed(1);
-          document.getElementById("notaFinal").value = promedio;
-        }
-
-
-        function guardarNotas() {
-          const estudiante = document.querySelector('input[name="estudiante"]').value;
-          const notas = {
-            estudiante: estudiante,
-            nota1: document.getElementById("nota1").value,
-            nota2: document.getElementById("nota2").value,
-            nota3: document.getElementById("nota3").value,
-            notaFinal: document.getElementById("notaFinal").value
-          };
-
-          localStorage.setItem("notas_" + estudiante, JSON.stringify(notas));
-          alert("Notas guardadas correctamente ✅");
-        }
-      </script>
-      </form>
+      <button class="style-button" type="button" onclick="guardarNota()">Guardar Nota</button>
     </fieldset>
   </main>
+
+  <script>
+    function guardarNota() {
+
+      const n1 = parseFloat(document.querySelector('[name="nota1"]').value) || 0;
+      const n2 = parseFloat(document.querySelector('[name="nota2"]').value) || 0;
+      const n3 = parseFloat(document.querySelector('[name="nota3"]').value) || 0;
+      const notaFinal = document.querySelector('[name="notaFinal"]');
+      const promedioGeneral = document.getElementById("promedioGeneral");
+
+
+      const promedio = ((n1 + n2 + n3) / 3).toFixed(1);
+
+
+      notaFinal.value = promedio;
+      promedioGeneral.value = promedio;
+    }
+  </script>
 
   <footer class="style-footer">
     <p class="parrafos">© 2025 Centro Educativo</p>
