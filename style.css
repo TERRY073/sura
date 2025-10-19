@@ -171,6 +171,27 @@ a {
   transition: color 0.3s ease;
 }
 
+.ancla-inferior-izquierda {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: var(--azul-medio);
+  color: var(--blanco);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  z-index: 999;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.ancla-inferior-izquierda:hover {
+  background-color: var(--azul-oscuro);
+  transform: scale(1.05);
+}
+
 /* header y nav general */
 header {
   background-color: var(--azul-medio);
