@@ -13,85 +13,83 @@
 
     <fieldset class="style-fieldset">
       <legend class="style-legend">Calificaciones</legend>
+      <p class="parrafos">
+        <label class="style-label">Asignatura:</label>
+        <select class="style-select" name="Asignaturas">
+          <option value="Seleccionar">Seleccionar</option>
+          <option value="curso de logica">curso de logica</option>
+          <option value="curso de reposteria">curso de reposteria</option>
+          <option value="curso de finansas">curso de finansas</option>
+          <option value="curso de Riesgo">curso de Riesgo</option>
+        </select>
+      </p>
 
-      <form class="style-forms" action="php/insertar_nota.php" method="POST">
+      <p class="parrafos">
+        <label class="style-label">Grupo:</label>
+        <input class="style-input-text" type="text" name="grupo" required>
+      </p>
 
-        <p class="parrafos">
-          <label class="style-label">Asignatura:</label>
-          <select class="style-select" name="Asignaturas">
-            <option value="Seleccionar">Seleccionar</option>
-            <option value="curso de logica">curso de logica</option>
-            <option value="curso de reposteria">curso de reposteria</option>
-            <option value="curso de finansas">curso de finansas</option>
-            <option value="curso de Riesgo">curso de Riesgo</option>
-          </select>
-        </p>
+      <p class="parrafos">
+        <label class="style-label">Fecha:</label>
+        <input class="style-input-date" type="date" name="fecha_evaluacion" required>
+      </p>
 
-        <p class="parrafos">
-          <label class="style-label">Grupo:</label>
-          <input class="style-input-text" type="text" name="grupo" required>
-        </p>
+      <p class="parrafos">
+        <label class="style-label">Docente:</label>
+        <input class="style-input-text" type="text" name="docente" required>
+      </p>
 
-        <p class="parrafos">
-          <label class="style-label">Fecha:</label>
-          <input class="style-input-date" type="date" name="fecha_evaluacion" required>
-        </p>
+      <table class="style-table">
+        <thead class="style-thead">
+          <tr class="style-tr">
+            <th class="style-th">Estudiante</th>
+            <th class="style-th">Calificación 1</th>
+            <th class="style-th">Calificación 2</th>
+            <th class="style-th">Calificación 3</th>
+            <th class="style-th">Calificación Final</th>
+          </tr>
+        </thead>
+        <tbody class="style-tbody">
+          <tr class="style-tr">
+            <td class="style-td"><input class="style-input-text" type="text" name="estudiante_nombre" required></td>
+            <td class="style-td"><input class="style-input-number" type="number" name="nota1" step="0.1" required></td>
+            <td class="style-td"><input class="style-input-number" type="number" name="nota2" step="0.1" required></td>
+            <td class="style-td"><input class="style-input-number" type="number" name="nota3" step="0.1" required></td>
+            <td class="style-td"><input class="style-input-number" type="number" name="notaFinal" step="0.1" required>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <p class="parrafos">
-          <label class="style-label">Docente:</label>
-          <input class="style-input-text" type="text" name="docente" required>
-        </p>
+      <br>
 
-        <table class="style-table">
-          <thead class="style-thead">
-            <tr class="style-tr">
-              <th class="style-th">Estudiante</th>
-              <th class="style-th">Calificación 1</th>
-              <th class="style-th">Calificación 2</th>
-              <th class="style-th">Calificación 3</th>
-              <th class="style-th">Calificación Final</th>
-            </tr>
-          </thead>
-          <tbody class="style-tbody">
-            <tr class="style-tr">
-              <td class="style-td"><input class="style-input-text" type="text" name="estudiante_nombre" required></td>
-              <td class="style-td"><input class="style-input-number" type="number" name="nota1" step="0.1" required></td>
-              <td class="style-td"><input class="style-input-number" type="number" name="nota2" step="0.1" required></td>
-              <td class="style-td"><input class="style-input-number" type="number" name="nota3" step="0.1" required></td>
-              <td class="style-td"><input class="style-input-number" type="number" name="notaFinal" step="0.1" required></td>
-            </tr>
-          </tbody>
-        </table>
+      <button class="style-button" type="submit">Guardar Nota</button>
+      <script>
 
-        <br>
+        function calcularNotaFinal() {
+          let n1 = parseFloat(document.getElementById("nota1").value) || 0;
+          let n2 = parseFloat(document.getElementById("nota2").value) || 0;
+          let n3 = parseFloat(document.getElementById("nota3").value) || 0;
 
-        <button class="style-button" type="submit">Guardar Nota</button>
- <script>
-    
-    function calcularNotaFinal() {
-      let n1 = parseFloat(document.getElementById("nota1").value) || 0;
-      let n2 = parseFloat(document.getElementById("nota2").value) || 0;
-      let n3 = parseFloat(document.getElementById("nota3").value) || 0;
+          let promedio = ((n1 + n2 + n3) / 3).toFixed(1);
+          document.getElementById("notaFinal").value = promedio;
+        }
 
-      let promedio = ((n1 + n2 + n3) / 3).toFixed(1);
-      document.getElementById("notaFinal").value = promedio;
-    }
 
-    
-    function guardarNotas() {
-      const estudiante = document.querySelector('input[name="estudiante"]').value;
-      const notas = {
-        estudiante: estudiante,
-        nota1: document.getElementById("nota1").value,
-        nota2: document.getElementById("nota2").value,
-        nota3: document.getElementById("nota3").value,
-        notaFinal: document.getElementById("notaFinal").value
-      };
+        function guardarNotas() {
+          const estudiante = document.querySelector('input[name="estudiante"]').value;
+          const notas = {
+            estudiante: estudiante,
+            nota1: document.getElementById("nota1").value,
+            nota2: document.getElementById("nota2").value,
+            nota3: document.getElementById("nota3").value,
+            notaFinal: document.getElementById("notaFinal").value
+          };
 
-      localStorage.setItem("notas_" + estudiante, JSON.stringify(notas));
-      alert("Notas guardadas correctamente ✅");
-    }
-  </script>
+          localStorage.setItem("notas_" + estudiante, JSON.stringify(notas));
+          alert("Notas guardadas correctamente ✅");
+        }
+      </script>
       </form>
     </fieldset>
   </main>
