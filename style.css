@@ -338,3 +338,19 @@ footer p {
       font-size: 1.1rem;
       margin: 0.6rem 0;
     }
+
+
+
+
+.Styheader {
+  background-color: white;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.Styh1 {
+  color: #0072ce;
+}
